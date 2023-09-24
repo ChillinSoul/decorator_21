@@ -4,8 +4,7 @@ import doc.house.dataTypes.Move;
 import doc.house.dataTypes.State;
 
 public class Dealer {
-	private Hand hand;
-	private Move move;
+	private final Hand hand;
 	private State state;
 
 	public Dealer() {

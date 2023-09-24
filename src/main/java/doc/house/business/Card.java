@@ -6,7 +6,7 @@ import doc.house.dataTypes.Suit;
 public class Card{
 	private final Suit suit;
 	private final int rank;
-	private MessageDictionary messageDictionary = new MessageDictionary("messages");
+	private final MessageDictionary messageDictionary = new MessageDictionary("messages");
 
 	private boolean faceUp = false;
 

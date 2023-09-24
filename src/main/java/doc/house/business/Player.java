@@ -15,13 +15,11 @@ public class Player implements Participant {
 	private int chips;
 	private int bet;
 	private final Hand hand;
-	private Participant participant;
 
 	/**
 	 * Constructor for Player.
 	 */
 	public Player() {
-		participant = this;
 		state = State.STANDARD;
 		hand = new Hand();
 		chips = INITIAL_CHIPS;
@@ -59,17 +57,11 @@ public class Player implements Participant {
 
 	}
 
-	/**
-	 * Adds a card to the player's hand.
-	 * @param card The card to add to the player's hand.
-	 */
-
 
 	/**
 	 * Clears the player's hands and bets.
 	 */
 	public void clear() {
-		participant = this; // Reset to original state
 		hand.clear();
 		bet = 0;
 		state = State.STANDARD;
@@ -106,13 +98,6 @@ public class Player implements Participant {
 	@Override
 	public boolean isStanding() {
 		return this.state == State.STANDING;
-	}
-
-	/**
-	 * Initiates a split, decorating the participant with a SplitHandDecorator.
-	 */
-	public void split() {
-		participant = new SplitHandDecorator((Player)participant);
 	}
 
 	/**

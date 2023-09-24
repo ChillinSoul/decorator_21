@@ -18,9 +18,10 @@ public class Game {
     private final Deck deck;
     private final Terminal terminal;
     private final LegalCheck legalCheck;
+    private final RuleBook rules;
 
     public Game() {
-        RuleBook rules = new RuleBook();
+        this.rules = new RuleBook();
         this.dealer = new Dealer();
         this.terminal = new Terminal();
         this.legalCheck = new LegalCheck(rules);
@@ -108,7 +109,7 @@ public class Game {
                     handleSplit(participant);
                     return;  // Ends player's turn
                 default:
-                    System.out.println("Invalid action. Try again.");
+                    terminal.display("Invalid action. Try again.");
                     break;
             }
             terminal.display(participant.displayHand());
@@ -132,16 +133,14 @@ public class Game {
             players.add(player);
             ((SplitHandDecorator) player).getOriginalParticipant().addCard(deck.draw(true));
             ((SplitHandDecorator) player).getSplitParticipant().addCard(deck.draw(true));
-            if (player != null) {
-                // Now you have two separate hands: player and splitPlayer
-                // Proceed with the game logic for each hand
-                playerLoop(((SplitHandDecorator) player).getOriginalParticipant());
-                playerLoop(((SplitHandDecorator) player).getSplitParticipant());
-            } else {
-                System.out.println("Invalid split. Cannot split hand.");
-            }
+
+            // Now you have two separate hands: player and splitPlayer
+            // Proceed with the game logic for each hand
+            playerLoop(((SplitHandDecorator) player).getOriginalParticipant());
+            playerLoop(((SplitHandDecorator) player).getSplitParticipant());
+
         } else {
-            System.out.println("Cannot split hand for non-player participants.");
+            terminal.display("Cannot split hand for non-player participants.");
         }
     }
 
@@ -173,7 +172,7 @@ public class Game {
 
     public void evaluateRound() {
         boolean dealerBusted = dealer.getHand().isBusted();
-        boolean dealerBlackJack = dealer.getHand().getSize() == 2 && dealer.getScore() == 21;
+        boolean dealerBlackJack = dealer.getHand().getSize() == 2 && dealer.getScore() == rules.getRule("BlackJackScore");
 
         for (Participant player : players) {
             evaluatePlayerRound(player, dealerBusted, dealerBlackJack);
@@ -209,7 +208,7 @@ public class Game {
 
     private double evaluateHand(State state, Hand hand, boolean dealerBusted, boolean dealerBlackJack) {
         if (state == State.NULL) {
-            return 0;
+            return this.rules.getRule("LOSS_MULTIPLIER");
         }
 
         if (dealerBlackJack) {
@@ -221,35 +220,37 @@ public class Game {
 
     private double handleDealerBlackjack(State state, Hand hand) {
         if (state == State.STANDING && hand.isBlackJack()) {
-            return 1.5;
+            return rules.getRule("BLACKJACK_MULTIPLIER");
         }
-        return 0;
+        return this.rules.getRule("LOSS_MULTIPLIER");
     }
 
     private double handleStandardOutcome(State state, Hand hand, boolean dealerBusted) {
-        switch (state) {
-            case STANDING:
-                return handleStanding(hand, dealerBusted);
-            case BUSTED:
-            default:
-                return 0;
-        }
+        return switch (state) {
+            case STANDING -> handleStanding(hand, dealerBusted);
+            default -> this.rules.getRule("LOSS_MULTIPLIER");
+        };
     }
+
 
     private double handleStanding(Hand hand, boolean dealerBusted) {
         if (hand.isBlackJack()) {
-            return 2.5;
-        } else if (hand.isBusted()) {
-            return 0;
-        } else if (dealerBusted) {
-            return 2;
-        } else if (hand.getScore() > dealer.getScore()) {
-            return 2;
-        } else if (hand.getScore() == dealer.getScore()) {
-            return 1;
-        } else {
-            return 0;
+            return this.rules.getRule("BLACKJACK_MULTIPLIER");
         }
+
+        if (hand.isBusted()) {
+            return this.rules.getRule("LOSS_MULTIPLIER");
+        }
+
+        if (dealerBusted || hand.getScore() > dealer.getScore()) {
+            return this.rules.getRule("WIN_MULTIPLIER");
+        }
+
+        if (hand.getScore() == dealer.getScore()) {
+            return this.rules.getRule("TIE_MULTIPLIER");
+        }
+
+        return this.rules.getRule("LOSS_MULTIPLIER");
     }
 
 

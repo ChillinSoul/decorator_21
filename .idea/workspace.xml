@@ -4,30 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62a186bd-7471-4318-846e-d849e29d8b54" name="Changes" comment="the start">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Dealer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Deck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Hand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/LegalCheck.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Rules.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/SplitHandDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/contract/Participant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/contract/ParticipantDecorator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/Move.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/Pair.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/State.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/Suit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/helpers/MessageDictionary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/helpers/RuleBook.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/logic/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/doc/house/ui/Terminal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages-FR.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/messages.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/rules.properties" afterDir="false" />
+    <list default="true" id="62a186bd-7471-4318-846e-d849e29d8b54" name="Changes" comment="basic game loop done split works&#10;to do:&#10;bet limit check &#10;messages &#10;polish">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Dealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Hand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/Rules.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/business/SplitHandDecorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/business/SplitHandDecorator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/dataTypes/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/helpers/RuleBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/helpers/RuleBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/doc/house/logic/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/doc/house/logic/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/rules.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/rules.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,11 +139,20 @@
       <option name="project" value="LOCAL" />
       <updated>1695543009060</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="basic game loop done split works&#10;to do:&#10;bet limit check &#10;messages &#10;polish">
+      <option name="closed" value="true" />
+      <created>1695572640442</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1695572640442</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="the start" />
-    <option name="LAST_COMMIT_MESSAGE" value="the start" />
+    <MESSAGE value="basic game loop done split works&#10;to do:&#10;bet limit check &#10;messages &#10;polish" />
+    <option name="LAST_COMMIT_MESSAGE" value="basic game loop done split works&#10;to do:&#10;bet limit check &#10;messages &#10;polish" />
   </component>
 </project>

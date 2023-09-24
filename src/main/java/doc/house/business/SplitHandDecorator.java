@@ -4,9 +4,9 @@ import doc.house.contract.Participant;
 import doc.house.contract.ParticipantDecorator;
 import doc.house.dataTypes.State;
 public class SplitHandDecorator extends ParticipantDecorator {
-    private Hand splitHand;
+    private  Hand splitHand;
     private State splitState;
-    private SplitParticipant splitParticipant;
+    private final SplitParticipant splitParticipant;
     private int splitBet;
     public void clear() {
         super.getDecoratedParticipant().clear();
@@ -31,14 +31,8 @@ public class SplitHandDecorator extends ParticipantDecorator {
         }
     }
 
-    public Hand getSplitHand() {
-        return this.splitHand;
-    }
     public void setState(State state){
         this.splitState = state;
-    }
-    public State getSplitState() {
-        return this.splitState;
     }
     public String displayHand() {
         return this.splitHand.toString();
@@ -64,7 +58,7 @@ public class SplitHandDecorator extends ParticipantDecorator {
 
 
     private class SplitParticipant implements Participant {
-        private Hand hand;
+        private final Hand hand;
         private State state;
         private int bet;
 
@@ -128,8 +122,7 @@ public class SplitHandDecorator extends ParticipantDecorator {
         }
         public void payout(double splitBetMultiplier) {
             Participant originalParticipant = getDecoratedParticipant();
-            if (originalParticipant instanceof Player) {
-                Player player = (Player) originalParticipant;
+            if (originalParticipant instanceof Player player) {
                 player.addChips((int) (splitBetMultiplier * this.bet));
                 this.bet = 0;
             } else {

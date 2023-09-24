@@ -14,7 +14,6 @@ public class RuleBook {
 
     /**
      * Constructor to initialize and load the rules.
-     *
      * Reads rules from the 'rules.properties' file located in the resource directory.
      * If the file cannot be loaded, it prints the stack trace.
      */

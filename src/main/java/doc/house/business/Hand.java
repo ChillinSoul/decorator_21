@@ -1,7 +1,5 @@
 package doc.house.business;
 
-import doc.house.dataTypes.State;
-
 import java.util.Stack;
 
 public class Hand{
